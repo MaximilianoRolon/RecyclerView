@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecyclerView</string>
+    <string name="pnombre">Vault boy</string>
+    <string name="ptelefono">1568481565</string>
 </resources>
