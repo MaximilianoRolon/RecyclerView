@@ -1,22 +1,28 @@
 package com.example.maxir.recyclerview;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.ContactoViewHolder>{
 
     ArrayList<Contactos> contactos;
+    Activity activity;
 
-    public ContactoAdaptador(ArrayList<Contactos> contactos){
+    public ContactoAdaptador(ArrayList<Contactos> contactos, Activity activity){
         this.contactos = contactos;
+        this.activity = activity;
     }
 
     @NonNull
@@ -28,11 +34,30 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
 
     @Override
     public void onBindViewHolder(@NonNull ContactoViewHolder contactoViewHolder, int position) {
-        Contactos contacto = contactos.get(position);
+        final Contactos contacto = contactos.get(position);
 
         contactoViewHolder.imgFoto.setImageResource(contacto.getFoto());
         contactoViewHolder.tvNombreCV.setText(contacto.getNombre());
         contactoViewHolder.tvTelefonoCV.setText(contacto.getTelefono());
+
+        contactoViewHolder.imgFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity, contacto.getNombre(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, DetalleContacto.class);
+                intent.putExtra("nombre", contacto.getNombre());
+                intent.putExtra("telefono", contacto.getTelefono());
+                intent.putExtra("mail", contacto.getEmail());
+                activity.startActivity(intent);
+            }
+        });
+
+        contactoViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity, "Diste Like a:" + contacto.getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -45,6 +70,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         private ImageView imgFoto;
         private TextView tvNombreCV;
         private TextView tvTelefonoCV;
+        private ImageButton btnLike;
 
 
         public ContactoViewHolder(View itemView) {
@@ -52,6 +78,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             imgFoto         = (ImageView) itemView.findViewById(R.id.imgFoto);
             tvNombreCV      = (TextView) itemView.findViewById(R.id.tvNombreCV);
             tvTelefonoCV    = (TextView) itemView.findViewById(R.id.tvTelefonoCV);
+            btnLike         = (ImageButton) itemView.findViewById(R.id.btnLike);
         }
     }
 
