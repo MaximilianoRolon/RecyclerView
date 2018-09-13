@@ -1,4 +1,4 @@
-package com.example.maxir.recyclerview;
+package com.example.maxir.recyclerview.pojo;
 
 public class Contactos {
 

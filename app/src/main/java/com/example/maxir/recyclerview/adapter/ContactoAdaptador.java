@@ -1,8 +1,7 @@
-package com.example.maxir.recyclerview;
+package com.example.maxir.recyclerview.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +11,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.maxir.recyclerview.pojo.Contactos;
+import com.example.maxir.recyclerview.DetalleContacto;
+import com.example.maxir.recyclerview.R;
 
 import java.util.ArrayList;
 
