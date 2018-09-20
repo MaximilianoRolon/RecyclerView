@@ -18,8 +18,6 @@ import com.example.maxir.recyclerview.pojo.Contactos;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener {
-    private ArrayList<Contactos> contactos = new ArrayList<Contactos>();
-    private RecyclerView listaContactos;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Toolbar toolbar;
@@ -38,17 +36,7 @@ public class MainActivity extends AppCompatActivity implements PerfilFragment.On
         setUpViewPager();
 
         /*
-        inicializarListaContactos();
-        listaContactos = (RecyclerView) findViewById(R.id.rvContactos);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        GridLayoutManager glm = new GridLayoutManager(this, 2);
-
-
-        listaContactos.setLayoutManager(glm);
-        inicializarAdaptador();
         */
 
     }
@@ -67,19 +55,7 @@ public class MainActivity extends AppCompatActivity implements PerfilFragment.On
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    public void inicializarAdaptador(){
-        ContactoAdaptador adaptador = new ContactoAdaptador(contactos,this);
-        listaContactos.setAdapter(adaptador);
-    }
 
-
-    public void inicializarListaContactos(){
-        contactos.add(new Contactos("15/7", "Vault Boy", "0761411", "fo76@opgg.com", "BOooyyy", R.drawable.vault_boy));
-        contactos.add(new Contactos("15/7", "Vault Boy", "0761411", "fo76@opgg.com", "BOooyyy", R.drawable.vault_boy));
-        contactos.add(new Contactos("15/7", "Vault Boy", "0761411", "fo76@opgg.com", "BOooyyy", R.drawable.vault_boy));
-        contactos.add(new Contactos("15/7", "Vault Boy", "0761411", "fo76@opgg.com", "BOooyyy", R.drawable.vault_boy));
-        contactos.add(new Contactos("15/7", "Vault Boy", "0761411", "fo76@opgg.com", "BOooyyy", R.drawable.vault_boy));
-    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
